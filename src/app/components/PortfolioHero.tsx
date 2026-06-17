@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import imgProjectImage from "../../imports/Frame1/e853e1175dc60b6082fea933da3193da9e99e778.png";
 import imgExternalLink from "../../imports/Frame1/ebd34b57f034b9174dcd8c7dd8b135645a23ece6.png";
 import { Header, Footer } from "./Shared";
+import { FadeUp } from "./FadeUp";
 
 const experiences = [
   { year: "2026", title: "UI/UX QA Intern", company: "WizeX" },
@@ -16,6 +17,7 @@ export function PortfolioHero() {
       <Header />
 
       {/* ── HERO ── */}
+      <FadeUp>
       <section className="flex flex-col lg:flex-row gap-12 lg:gap-8 px-6 md:px-12 lg:px-[70px] mt-10 md:mt-16 lg:mt-[80px]">
         {/* Headline */}
         <div className="lg:w-7/12 xl:w-1/2">
@@ -42,8 +44,10 @@ export function PortfolioHero() {
           ))}
         </div>
       </section>
+      </FadeUp>
 
       {/* ── PROJECT CARD ── */}
+      <FadeUp delay={0.2}>
       <section className="px-6 md:px-12 lg:px-[70px] mt-12 md:mt-16 lg:mt-[80px]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           <Link to="/case-study/richoos" className="block relative w-full cursor-pointer group">
@@ -176,6 +180,7 @@ export function PortfolioHero() {
         </a>
         </div>
       </section>
+      </FadeUp>
 
 
 

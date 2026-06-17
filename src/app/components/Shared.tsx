@@ -64,7 +64,7 @@ export function Header() {
   return (
     <nav className="flex items-center justify-between px-6 md:px-12 lg:px-[70px] py-4 lg:py-6 w-full font-['Poppins',sans-serif] bg-background relative z-50">
       {/* Logo */}
-      <Link to="/" className="flex gap-2 md:gap-4 items-center">
+      <Link to="/" className="flex gap-[6px] md:gap-4 items-center">
         <div className="scale-75 md:scale-100 origin-left">
           <CustomAvatar />
         </div>
@@ -90,8 +90,8 @@ export function Header() {
 
       {/* Mobile menu button */}
       <button onClick={() => setIsMenuOpen(true)} className="lg:hidden bg-[#041F39] text-[#f8fafb] flex gap-2.5 items-center justify-center px-6 py-2 rounded-full cursor-pointer shadow-[0px_4px_10px_rgba(0,0,0,0.25)] hover:bg-[#0057FF] transition-colors">
-        <img alt="menu" className="w-[25px] h-[25px] object-contain brightness-0 invert" src={imgMenu} />
-        <span className="text-base font-semibold whitespace-nowrap">Menu</span>
+        <img alt="menu" className="w-[15px] h-[15px] object-contain brightness-0 invert" src={imgMenu} />
+        <span className="text-[14px] font-medium whitespace-nowrap">Menu</span>
       </button>
 
       {/* Mobile Menu Overlay */}

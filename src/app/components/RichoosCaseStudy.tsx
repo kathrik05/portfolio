@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router";
+import { FadeUp } from "./FadeUp";
 import { ArrowLeft } from "lucide-react";
 import { Header, Footer } from "./Shared";
 import { motion } from "motion/react";
@@ -95,6 +96,11 @@ export function RichoosCaseStudy() {
   const [activeSection, setActiveSection] = useState("overview");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -156,6 +162,7 @@ export function RichoosCaseStudy() {
           <main className="lg:col-span-9 flex flex-col gap-16 lg:gap-24">
 
             {/* OVERVIEW SECTION */}
+            <FadeUp delay={0.1}>
             <section className="flex flex-col gap-12" id="overview">
               {/* Hero Placeholder Image - Now matching Research image width */}
               <div className="grid grid-cols-1 lg:grid-cols-9 gap-8 lg:gap-[30px]">
@@ -198,8 +205,10 @@ export function RichoosCaseStudy() {
                 </div>
               </div>
             </section>
+          </FadeUp>
 
             {/* PROBLEM SECTION */}
+            <FadeUp delay={0.1}>
             <section className="flex flex-col gap-12" id="problem">
               {/* Spans from overall Col 4 to Col 10 */}
               <div className="grid grid-cols-1 lg:grid-cols-9 gap-8 lg:gap-[30px]">
@@ -216,8 +225,10 @@ export function RichoosCaseStudy() {
                 </div>
               </div>
             </section>
+          </FadeUp>
 
             {/* SOLUTION SECTION */}
+            <FadeUp delay={0.1}>
             <section className="flex flex-col gap-12" id="solution">
               {/* Spans from overall Col 4 to Col 10 */}
               <div className="grid grid-cols-1 lg:grid-cols-9 gap-8 lg:gap-[30px]">
@@ -234,8 +245,10 @@ export function RichoosCaseStudy() {
                 </div>
               </div>
             </section>
+          </FadeUp>
 
             {/* RESEARCH SECTION */}
+            <FadeUp delay={0.1}>
             <section className="flex flex-col gap-12" id="research">
               {/* Spans from overall Col 4 to Col 10 */}
               <div className="grid grid-cols-1 lg:grid-cols-9 gap-8 lg:gap-[30px]">
@@ -267,8 +280,10 @@ export function RichoosCaseStudy() {
                 </div>
               </div>
             </section>
+          </FadeUp>
 
             {/* DESIGN PROCESS SECTION */}
+            <FadeUp delay={0.1}>
             <section className="flex flex-col gap-12" id="design-process">
               {/* Spans from overall Col 4 to Col 10 */}
               <div className="grid grid-cols-1 lg:grid-cols-9 gap-8 lg:gap-[30px]">
@@ -375,8 +390,10 @@ export function RichoosCaseStudy() {
                 </div>
               </div>
             </section>
+          </FadeUp>
 
             {/* Outcomes Section */}
+            <FadeUp delay={0.1}>
             <section className="flex flex-col gap-12" id="outcomes">
               <div className="grid grid-cols-1 lg:grid-cols-9 gap-8 lg:gap-[30px]">
                 <div className="lg:col-span-7 flex flex-col gap-8 lg:gap-16">
@@ -392,8 +409,10 @@ export function RichoosCaseStudy() {
                 </div>
               </div>
             </section>
+          </FadeUp>
 
             {/* Reflection Section */}
+            <FadeUp delay={0.1}>
             <section className="flex flex-col gap-12" id="reflection">
               <div className="grid grid-cols-1 lg:grid-cols-9 gap-8 lg:gap-[30px]">
                 <div className="lg:col-span-7 flex flex-col gap-8 lg:gap-16">
@@ -414,6 +433,7 @@ export function RichoosCaseStudy() {
                 </div>
               </div>
             </section>
+          </FadeUp>
 
           </main>
 
