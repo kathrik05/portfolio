@@ -14,9 +14,20 @@ export function AboutMe() {
             >
               About me
             </h3>
-            <p className="text-[#333333] text-[18px] leading-[28px] font-normal text-justify">
-              Hi, I'm Karthik, a CSBS student from Trivandrum with a deep love for building and designing web products. I aspire to be a product designer, and what draws me into this field is the human side of it — sitting down with people, genuinely listening to the difficulties and problems they're navigating, and then translating that understanding into a digital solution that actually fits their needs. This curiosity about people and their struggles has always come naturally to me, and it's what shapes the way I approach every project I take on. In college, I've had the chance to work alongside peers who were building their own projects, lending a hand in areas where the user experience needed sharpening or where the product needed more thoughtful, well-placed touchpoints for users to engage with. Beyond that, I carry a constant passion for new technology, always staying curious about emerging tools, trends, and ways of thinking that can push the products I build to be more meaningful, more usable, and more in tune with the people they're meant to serve.
-            </p>
+            <div className="flex flex-col gap-6 text-[#333333] text-[18px] leading-[28px] font-normal text-justify">
+              <p>
+                I'm Karthik, originally from Trivandrum, where I currently live. I graduated with a degree in Computer Science and Business Systems from Rajagiri School of Engineering and Technology, Kochi.
+              </p>
+
+
+              <p>
+                I like to talk with people and understand their business — how it works, what systems are in place, and how things actually run day to day. I enjoy hearing about the problems they face in their work, and I find it satisfying to think through how a digital solution could fix that problem for them. Alongside this, I love learning about technology. I'm always curious to explore new tools, new ways of building things, and new ideas that are shaping how products are made today.
+              </p>
+
+              <p>
+                I aspire to work with people or companies who are building something meaningful, and help them turn that into a product that actually makes a difference. I want to build things that don't just work, but genuinely make people's lives easier — products that solve real problems for real people.
+              </p>
+            </div>
           </div>
         </div>
       </main>
