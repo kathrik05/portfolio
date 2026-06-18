@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, UIEvent } from 'react';
+import { useState, useRef, useEffect, UIEvent, MouseEvent } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export type CarouselMedia = {
@@ -10,13 +10,13 @@ export function MediaCarousel({ media }: { media: CarouselMedia[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  const activeIndexRef = useRef(0);
   const isProgrammaticScroll = useRef(false);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    activeIndexRef.current = activeIndex;
-  }, [activeIndex]);
+  // Drag to scroll state
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   const scrollTo = (index: number) => {
     if (containerRef.current) {
@@ -26,7 +26,6 @@ export function MediaCarousel({ media }: { media: CarouselMedia[] }) {
       const targetChild = children[index];
       if (targetChild) {
         isProgrammaticScroll.current = true;
-        // Scroll exactly to the child's offset, minus the 16px padding to preserve the visual gap!
         containerRef.current.scrollTo({ left: targetChild.offsetLeft - 16, behavior: 'smooth' });
         
         if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
@@ -42,14 +41,13 @@ export function MediaCarousel({ media }: { media: CarouselMedia[] }) {
 
     const container = e.currentTarget;
     const children = Array.from(container.children) as HTMLElement[];
-    const scrollLeft = container.scrollLeft;
+    const currentScrollLeft = container.scrollLeft;
     
     let closestIndex = 0;
     let minDistance = Infinity;
     
     children.forEach((child, index) => {
-      // Compare scroll position against offsetLeft minus padding
-      const distance = Math.abs((child.offsetLeft - 16) - scrollLeft);
+      const distance = Math.abs((child.offsetLeft - 16) - currentScrollLeft);
       if (distance < minDistance) {
         minDistance = distance;
         closestIndex = index;
@@ -71,23 +69,35 @@ export function MediaCarousel({ media }: { media: CarouselMedia[] }) {
     scrollTo(nextIndex);
   };
 
-  // Auto scroll on loop
-  useEffect(() => {
-    if (isHovered) return;
+  // Dragging logic
+  const handleMouseDown = (e: MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.pageX - (containerRef.current?.offsetLeft || 0));
+    setScrollLeft(containerRef.current?.scrollLeft || 0);
+  };
 
-    const timer = setInterval(() => {
-      const nextIndex = activeIndexRef.current === media.length - 1 ? 0 : activeIndexRef.current + 1;
-      scrollTo(nextIndex);
-    }, 4000);
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setIsDragging(false);
+  };
 
-    return () => clearInterval(timer);
-  }, [media.length, isHovered]);
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!isDragging || !containerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - (containerRef.current.offsetLeft || 0);
+    const walk = (x - startX) * 2; // scroll-fast
+    containerRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   return (
     <div 
       className="flex flex-col gap-4 w-full relative group"
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Navigation Arrows */}
       <button 
@@ -109,13 +119,16 @@ export function MediaCarousel({ media }: { media: CarouselMedia[] }) {
       <div 
         ref={containerRef}
         onScroll={handleScroll}
-        // Added scroll-pl-4 so CSS native snap respects the left padding
-        className="flex w-full gap-4 overflow-x-auto snap-x snap-mandatory scroll-pl-4 rounded-[16px] bg-[#d3d3d3] [&::-webkit-scrollbar]:hidden border border-gray-100 shadow-inner relative px-4 py-4"
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        className={`flex w-full gap-4 overflow-x-auto scroll-pl-4 bg-[#d3d3d3] border border-gray-100 shadow-inner relative px-4 py-4 ${
+          isDragging ? "cursor-grabbing snap-none" : "cursor-grab snap-x snap-mandatory"
+        }`}
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {media.map((item, index) => (
-          // Enforced uniform responsive aspect ratio for all slides
-          <div key={index} className="w-[80%] md:w-[85%] aspect-[16/10] flex-shrink-0 snap-start flex items-center justify-center overflow-hidden rounded-[8px]">
+          <div key={index} className="w-[80%] md:w-[85%] aspect-[16/10] flex-shrink-0 snap-start flex items-center justify-center overflow-hidden">
             {item.type === 'video' ? (
               <video 
                 src={item.src} 

@@ -48,136 +48,153 @@ export function PortfolioHero() {
 
       {/* ── PROJECT CARD ── */}
       <FadeUp delay={0.2}>
-      <section className="px-6 md:px-12 lg:px-[70px] mt-12 md:mt-16 lg:mt-[80px]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          <Link to="/case-study/richoos" className="block relative w-full cursor-pointer group">
-          {/* Project image */}
-          <div className="relative w-full aspect-[1.14] md:aspect-[1.6] overflow-hidden">
+      <section id="projects" className="px-6 md:px-12 lg:px-[70px] mt-12 md:mt-16 lg:mt-[80px]">
+        {/* Richoos Featured Project */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16 lg:mb-24">
+          
+          {/* Mobile Image (hidden on lg) */}
+          <Link to="/case-study/richoos" className="lg:hidden relative w-full aspect-[1.14] md:aspect-[1.6] overflow-hidden block">
             <img 
               alt="Richoos project" 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
               src={imgProjectImage} 
             />
-          </div>
+          </Link>
 
-          {/* Live badge */}
-          <button 
-            onClick={(e) => {
-              e.preventDefault();
-              window.open('https://richoos.com/', '_blank');
-            }}
-            className="absolute top-4 left-4 md:top-5 md:left-5 bg-[#041F39] text-[#f8fafb] flex gap-1.5 items-center justify-center px-4 py-1.5 rounded-full shadow-md z-30 hover:bg-[#0057FF] transition-colors cursor-pointer"
-          >
-            <img alt="" className="w-1.5 h-1.5 object-contain brightness-0 invert" src={imgExternalLink} />
-            <span className="text-[10px] md:text-xs font-semibold whitespace-nowrap tracking-wide">Visit Richoos</span>
-          </button>
-
-          {/* Project Details */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-4 md:mt-6 gap-2">
-            <h2
-              className="text-[#333333] text-[24px] tracking-tight lg:tracking-[-1.28px] m-0"
+          {/* Content */}
+          <div className="lg:col-span-5 flex flex-col gap-4 lg:gap-6">
+            <h3
+              className="text-[#333333] text-[32px] md:text-[40px] tracking-tight lg:tracking-[-1.28px] m-0"
               style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}
             >
               Richoos
-            </h2>
-            <span className="text-[#555555] text-sm lg:text-[16px] lg:leading-[25.6px] lg:tracking-[0px]">case study</span>
-          </div>
-        </Link>
-
-        {/* Behance Project */}
-        <a 
-          href="https://www.behance.net/gallery/216251511/project" 
-          target="_blank" 
-          rel="noreferrer" 
-          className="block relative w-full cursor-pointer group"
-        >
-          {/* Project image/iframe */}
-          <div className="relative w-full aspect-[1.14] md:aspect-[1.6] overflow-hidden bg-gray-100 flex items-center justify-center">
-            <iframe 
-              src="https://www.behance.net/embed/project/216251511?ilo0=1" 
-              allowFullScreen 
-              loading="lazy" 
-              frameBorder="0" 
-              allow="clipboard-write" 
-              referrerPolicy="strict-origin-when-cross-origin"
-              className="w-full h-full pointer-events-none"
-            ></iframe>
-            <div className="absolute inset-0 z-20"></div> {/* Click overlay */}
+            </h3>
+            <p className="text-[#555555] text-[16px] lg:text-[18px] leading-[24px] lg:leading-[28px] tracking-[0px]">
+              Transformed a traditional packaging supplier into a modern digital brand, organizing a vast catalog into a clean, credible experience for international clients.
+            </p>
+            <div className="flex flex-col md:flex-row gap-4 mt-2">
+              <button 
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open('https://richoos.com/', '_blank');
+                }}
+                className="bg-[#041F39] text-[#F8FAFB] flex items-center justify-center px-6 py-3 rounded-full shadow-md hover:bg-[#0057FF] transition-colors cursor-pointer"
+              >
+                <span className="text-[14px] md:text-[15px] font-semibold whitespace-nowrap font-['Poppins',sans-serif]">Visit Richoos</span>
+              </button>
+              <Link 
+                to="/case-study/richoos"
+                className="border border-[#041F39] text-[#041F39] flex items-center justify-center px-6 py-3 rounded-full hover:underline transition-all cursor-pointer"
+              >
+                <span className="text-[14px] md:text-[15px] font-semibold whitespace-nowrap font-['Poppins',sans-serif]">View Case Study</span>
+              </Link>
+            </div>
           </div>
 
+          {/* Desktop Image (hidden on mobile) */}
+          <Link to="/case-study/richoos" className="hidden lg:block lg:col-span-7 relative w-full aspect-[1.6] overflow-hidden">
+            <img 
+              alt="Richoos project" 
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
+              src={imgProjectImage} 
+            />
+          </Link>
+        </div>
 
+        {/* Other Projects Grid (3 columns) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+          {/* BigBytes Project */}
+          <a 
+            href="https://www.behance.net/gallery/216251511/project" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="block relative w-full cursor-pointer group"
+          >
+            {/* Project image/iframe */}
+            <div className="relative w-full aspect-[1.14] md:aspect-[1.6] overflow-hidden bg-gray-100 flex items-center justify-center">
+              <iframe 
+                src="https://www.behance.net/embed/project/216251511?ilo0=1" 
+                allowFullScreen 
+                loading="lazy" 
+                frameBorder="0" 
+                allow="clipboard-write" 
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="w-full h-full pointer-events-none"
+              ></iframe>
+              <div className="absolute inset-0 z-20"></div> {/* Click overlay */}
+            </div>
 
-          {/* Project Details */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-4 md:mt-6 gap-2">
-            <h2
-              className="text-[#333333] text-[24px] tracking-tight lg:tracking-[-1.28px] m-0 group-hover:text-[#041F39] transition-colors"
-              style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}
-            >
-              BigBytes
-            </h2>
-            <span className="text-[#555555] text-sm lg:text-[16px] lg:leading-[25.6px] lg:tracking-[0px]">concept</span>
-          </div>
-        </a>
+            {/* Project Details */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-4 md:mt-6 gap-2">
+              <h2
+                className="text-[#333333] text-[24px] tracking-tight lg:tracking-[-1.28px] m-0 group-hover:text-[#041F39] transition-colors"
+                style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}
+              >
+                BigBytes
+              </h2>
+              <span className="text-[#555555] text-sm lg:text-[16px] lg:leading-[25.6px] lg:tracking-[0px]">concept</span>
+            </div>
+          </a>
 
-        {/* Project 3 */}
-        <a 
-          href="https://www.behance.net/gallery/215614905/project" 
-          target="_blank" 
-          rel="noreferrer" 
-          className="block relative w-full cursor-pointer group"
-        >
-          <div className="relative w-full aspect-[1.14] md:aspect-[1.6] overflow-hidden bg-gray-100 flex items-center justify-center">
-            <iframe 
-              src="https://www.behance.net/embed/project/215614905?ilo0=1" 
-              allowFullScreen 
-              loading="lazy" 
-              frameBorder="0" 
-              allow="clipboard-write" 
-              referrerPolicy="strict-origin-when-cross-origin"
-              className="w-full h-full pointer-events-none"
-            ></iframe>
-            <div className="absolute inset-0 z-20"></div>
-          </div>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-4 md:mt-6 gap-2">
-            <h2
-              className="text-[#333333] text-[24px] tracking-tight lg:tracking-[-1.28px] m-0 group-hover:text-[#041F39] transition-colors"
-              style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}
-            >
-              1living
-            </h2>
-            <span className="text-[#555555] text-sm lg:text-[16px] lg:leading-[25.6px] lg:tracking-[0px]">concept</span>
-          </div>
-        </a>
+          {/* 1living Project */}
+          <a 
+            href="https://www.behance.net/gallery/215614905/project" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="block relative w-full cursor-pointer group"
+          >
+            <div className="relative w-full aspect-[1.14] md:aspect-[1.6] overflow-hidden bg-gray-100 flex items-center justify-center">
+              <iframe 
+                src="https://www.behance.net/embed/project/215614905?ilo0=1" 
+                allowFullScreen 
+                loading="lazy" 
+                frameBorder="0" 
+                allow="clipboard-write" 
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="w-full h-full pointer-events-none"
+              ></iframe>
+              <div className="absolute inset-0 z-20"></div>
+            </div>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-4 md:mt-6 gap-2">
+              <h2
+                className="text-[#333333] text-[24px] tracking-tight lg:tracking-[-1.28px] m-0 group-hover:text-[#041F39] transition-colors"
+                style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}
+              >
+                1living
+              </h2>
+              <span className="text-[#555555] text-sm lg:text-[16px] lg:leading-[25.6px] lg:tracking-[0px]">concept</span>
+            </div>
+          </a>
 
-        {/* Project 4 */}
-        <a 
-          href="https://www.behance.net/gallery/203893325/project" 
-          target="_blank" 
-          rel="noreferrer" 
-          className="block relative w-full cursor-pointer group"
-        >
-          <div className="relative w-full aspect-[1.14] md:aspect-[1.6] overflow-hidden bg-gray-100 flex items-center justify-center">
-            <iframe 
-              src="https://www.behance.net/embed/project/203893325?ilo0=1" 
-              allowFullScreen 
-              loading="lazy" 
-              frameBorder="0" 
-              allow="clipboard-write" 
-              referrerPolicy="strict-origin-when-cross-origin"
-              className="w-full h-full pointer-events-none"
-            ></iframe>
-            <div className="absolute inset-0 z-20"></div>
-          </div>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-4 md:mt-6 gap-2">
-            <h2
-              className="text-[#333333] text-[24px] tracking-tight lg:tracking-[-1.28px] m-0 group-hover:text-[#041F39] transition-colors"
-              style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}
-            >
-              Cafe
-            </h2>
-            <span className="text-[#555555] text-sm lg:text-[16px] lg:leading-[25.6px] lg:tracking-[0px]">concept</span>
-          </div>
-        </a>
+          {/* Cafe Project */}
+          <a 
+            href="https://www.behance.net/gallery/203893325/project" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="block relative w-full cursor-pointer group"
+          >
+            <div className="relative w-full aspect-[1.14] md:aspect-[1.6] overflow-hidden bg-gray-100 flex items-center justify-center">
+              <iframe 
+                src="https://www.behance.net/embed/project/203893325?ilo0=1" 
+                allowFullScreen 
+                loading="lazy" 
+                frameBorder="0" 
+                allow="clipboard-write" 
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="w-full h-full pointer-events-none"
+              ></iframe>
+              <div className="absolute inset-0 z-20"></div>
+            </div>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-4 md:mt-6 gap-2">
+              <h2
+                className="text-[#333333] text-[24px] tracking-tight lg:tracking-[-1.28px] m-0 group-hover:text-[#041F39] transition-colors"
+                style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}
+              >
+                Cafe
+              </h2>
+              <span className="text-[#555555] text-sm lg:text-[16px] lg:leading-[25.6px] lg:tracking-[0px]">concept</span>
+            </div>
+          </a>
         </div>
       </section>
       </FadeUp>

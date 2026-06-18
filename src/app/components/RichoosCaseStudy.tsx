@@ -30,7 +30,7 @@ function ParallaxSubsection({
   textNodes,
   imageSrc,
   imagePlaceholder,
-  imageClassName = "w-full h-auto rounded-[16px]",
+  imageClassName = "w-full h-auto",
   mediaElement,
 }: {
   title: string;
@@ -67,7 +67,7 @@ function ParallaxSubsection({
             className={imageClassName}
           />
         ) : (
-          <div className="w-full aspect-[2.1/1] bg-[#D9D9D9] flex items-center justify-center rounded-[16px]">
+          <div className="w-full aspect-[2.1/1] bg-[#D9D9D9] flex items-center justify-center">
             <span className="text-[#555555] text-lg font-medium">
               {imagePlaceholder}
             </span>
@@ -167,23 +167,22 @@ export function RichoosCaseStudy() {
               {/* Hero Placeholder Image - Now matching Research image width */}
               <div className="grid grid-cols-1 lg:grid-cols-9 gap-8 lg:gap-[30px]">
                 <div className="lg:col-span-7">
-                  <div className="w-full aspect-[2/1] lg:aspect-[2.1/1] bg-[#D9D9D9] rounded-[16px] flex items-center justify-center overflow-hidden">
+                  <div className="w-full aspect-[2/1] lg:aspect-[2.1/1] bg-[#D9D9D9] flex items-center justify-center overflow-hidden">
                     <img src="/heromain.webp" alt="Hero" className="w-full h-full object-cover" />
                   </div>
                 </div>
               </div>
 
               {/* Details Grid */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 justify-start">
+              <div className="flex flex-wrap lg:grid lg:grid-cols-4 gap-4 justify-start">
                 {overviewDetails.map((detail, i) => (
-                  <div key={i} className="flex flex-col gap-0.5 lg:gap-1">
+                  <div key={i} className="flex flex-col gap-1 pr-4 lg:pr-0">
                     <h2
-                      className="text-[#333333] text-[18px] tracking-tight lg:tracking-[-0.72px] lg:leading-[28px] m-0"
-                      style={{ fontFamily: "'Instrument Serif', serif" }}
+                      className="text-[#555555] text-[12px] md:text-[14px] font-semibold tracking-[1px] uppercase m-0 font-['Poppins',sans-serif]"
                     >
                       {detail.header}
                     </h2>
-                    <span className="text-[#333333] text-[18px] leading-[28px] tracking-[0px] font-normal">
+                    <span className="text-[#333333] text-[16px] md:text-[18px] leading-[28px] tracking-[0px] font-normal font-['Poppins',sans-serif]">
                       {detail.subheader}
                     </span>
                   </div>
@@ -403,9 +402,20 @@ export function RichoosCaseStudy() {
                   >
                     Outcomes
                   </h2>
-                  <p className="text-[#333333] text-[18px] leading-[28px] tracking-[0px]">
-                    The site is live and now serves as Richoos's official web presence. We don't have formal analytics, but the client confirmed something that matters most: new clients have found and reached out to Richoos directly through the website — a channel that didn't exist before.
-                  </p>
+                  <div className="flex flex-col gap-6 items-start">
+                    <p className="text-[#333333] text-[18px] leading-[28px] tracking-[0px]">
+                      The site is live and now serves as Richoos's official web presence. We don't have formal analytics, but the client confirmed something that matters most: new clients have found and reached out to Richoos directly through the website — a channel that didn't exist before.
+                    </p>
+                    <button 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.open('https://richoos.com/', '_blank');
+                      }}
+                      className="bg-[#041F39] text-[#F8FAFB] flex items-center justify-center px-6 py-3 rounded-full shadow-md hover:bg-[#0057FF] transition-colors cursor-pointer mt-2"
+                    >
+                      <span className="text-[14px] md:text-[15px] font-semibold whitespace-nowrap font-['Poppins',sans-serif]">Visit Richoos</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </section>
