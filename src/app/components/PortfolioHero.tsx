@@ -72,22 +72,22 @@ export function PortfolioHero() {
             <p className="text-[#555555] text-[16px] lg:text-[18px] leading-[24px] lg:leading-[28px] tracking-[0px]">
               Transformed a traditional packaging supplier into a modern digital brand, organizing a vast catalog into a clean, credible experience for international clients.
             </p>
-            <div className="flex flex-col md:flex-row gap-4 mt-2">
+            <div className="flex flex-col sm:flex-row gap-4 mt-2">
+              <Link 
+                to="/case-study/richoos"
+                className="bg-[#041F39] text-[#F8FAFB] flex items-center justify-center px-6 py-3 rounded-full shadow-md hover:bg-[#0057FF] transition-colors cursor-pointer"
+              >
+                <span className="text-[14px] md:text-[15px] font-semibold whitespace-nowrap font-['Poppins',sans-serif]">View Case Study</span>
+              </Link>
               <button 
                 onClick={(e) => {
                   e.preventDefault();
                   window.open('https://richoos.com/', '_blank');
                 }}
-                className="bg-[#041F39] text-[#F8FAFB] flex items-center justify-center px-6 py-3 rounded-full shadow-md hover:bg-[#0057FF] transition-colors cursor-pointer"
+                className="border border-[#041F39] text-[#041F39] flex items-center justify-center px-6 py-3 rounded-full hover:underline transition-all cursor-pointer"
               >
                 <span className="text-[14px] md:text-[15px] font-semibold whitespace-nowrap font-['Poppins',sans-serif]">Visit Richoos</span>
               </button>
-              <Link 
-                to="/case-study/richoos"
-                className="border border-[#041F39] text-[#041F39] flex items-center justify-center px-6 py-3 rounded-full hover:underline transition-all cursor-pointer"
-              >
-                <span className="text-[14px] md:text-[15px] font-semibold whitespace-nowrap font-['Poppins',sans-serif]">View Case Study</span>
-              </Link>
             </div>
           </div>
 
@@ -117,6 +117,7 @@ export function PortfolioHero() {
                 allowFullScreen 
                 loading="lazy" 
                 frameBorder="0" 
+                scrolling="no"
                 allow="clipboard-write" 
                 referrerPolicy="strict-origin-when-cross-origin"
                 className="w-full h-full pointer-events-none"
@@ -149,6 +150,7 @@ export function PortfolioHero() {
                 allowFullScreen 
                 loading="lazy" 
                 frameBorder="0" 
+                scrolling="no"
                 allow="clipboard-write" 
                 referrerPolicy="strict-origin-when-cross-origin"
                 className="w-full h-full pointer-events-none"
@@ -179,6 +181,7 @@ export function PortfolioHero() {
                 allowFullScreen 
                 loading="lazy" 
                 frameBorder="0" 
+                scrolling="no"
                 allow="clipboard-write" 
                 referrerPolicy="strict-origin-when-cross-origin"
                 className="w-full h-full pointer-events-none"
