@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router";
 import App from "./app/App.tsx";
 import "./styles/index.css";
 import { Agentation } from "agentation";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 createRoot(document.getElementById("root")!).render(
   <>
